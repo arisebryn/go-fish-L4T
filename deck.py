@@ -20,13 +20,25 @@ class Deck():
                     # Create a card object (set the rank and the suit)
         for suit in suits:
             for rank in range(1, 14):
-                card = Card()
-
+                card = Card(rank, suit)
+                self.deck_of_cards.append(card)
                 # Create a card object (set the rank and the suit)
                 # Add the object to the empty deck_of_cards list
 
+    def shuffle(self):
+        for index in range(len(self.deck_of_cards) - 1):
+            num = random.randint(index + 1, len(self.deck_of_cards) - 1)
+            temp = self.deck_of_cards[index]
+            # print("Index: {} Num: {}".format(index, num))
+            self.deck_of_cards[index] = self.deck_of_cards[num]
+            self.deck_of_cards[num] = temp
+
     # TODO: Create a method/function that displays the entire deck of cards
-    
+    def display_deck(self):
+        for card in self.deck_of_cards:
+            card.print_card()
+            
+# TESTING: Create a deck of cards object and print them to the console
 
 
 
